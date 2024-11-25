@@ -16,7 +16,7 @@ public class Task5 {
         folder1.add(file2);
 
         folder2.add(file3);
-        folder2.add(folder1); // Вложенная папка
+        folder2.add(folder1);
 
         // Выводим структуру файловой системы
         System.out.println("Пример 1:");
