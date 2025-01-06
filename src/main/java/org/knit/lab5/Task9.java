@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task9 {
-
+    public static final long TIME_LIMIT = 10 * 1000;
     public static void execute() {
         String path = "src/main/java/org/knit/lab5/dictionary.txt";
         Dictionary dictionary = new Dictionary();
@@ -25,11 +25,11 @@ public class Task9 {
         AtomicInteger correctCount = new AtomicInteger(0);
         AtomicInteger totalInputChars = new AtomicInteger(0);
         long startTime = System.currentTimeMillis();
-        long timeLimit = 60 * 1000;
+
 
 
         Runnable task = () -> {
-            if (System.currentTimeMillis() - startTime < timeLimit) {
+            if (System.currentTimeMillis() - startTime < TIME_LIMIT) {
                 String randomWord = dictionary.getRandomWord();
                 totalWords.addAndGet(1);
                 System.out.println("Введите это слово: " + randomWord);
@@ -46,7 +46,7 @@ public class Task9 {
         executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
 
         try {
-            Thread.sleep(timeLimit);
+            Thread.sleep(TIME_LIMIT);
         } catch (InterruptedException e) {
             return;
         }
